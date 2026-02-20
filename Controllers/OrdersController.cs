@@ -5,6 +5,8 @@ using StoreAPI.Entities;
 [Route("api/[controller]")]
 public class OrdersController : ControllerBase
 {
+
+    
     private readonly IOrderService _service;
 
     public OrdersController(IOrderService service)
@@ -12,9 +14,13 @@ public class OrdersController : ControllerBase
         _service = service;
     }
 
+
+
+
     [HttpGet]
-    public async Task<IActionResult> GetAll()
-        => Ok(await _service.GetAllAsync());
+    public async Task<IActionResult> GetAll()  => Ok(await _service.GetAllAsync());
+
+
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
@@ -24,7 +30,9 @@ public class OrdersController : ControllerBase
         return Ok(order);
     }
 
+
+
+
     [HttpPost]
-    public async Task<IActionResult> Create(Order order)
-        => Ok(await _service.CreateAsync(order));
+ public async Task<IActionResult> Create(Order order)  => Ok(await _service.CreateAsync(order));
 }

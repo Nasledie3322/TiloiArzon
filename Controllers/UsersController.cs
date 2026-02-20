@@ -2,21 +2,25 @@ using Microsoft.AspNetCore.Mvc;
 using StoreAPI.Entities;
 
 [ApiController]
+
 [Route("api/[controller]")]
+
+
 public class UsersController : ControllerBase
 {
-    private readonly IUserService _service;
+      private readonly IUserService _service;
 
-    public UsersController(IUserService service)
+public UsersController(IUserService service)
     {
         _service = service;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetAll()
-        => Ok(await _service.GetAllAsync());
+ [HttpGet]
+    public async Task<IActionResult> GetAll()=> Ok(await _service.GetAllAsync());
 
-    [HttpGet("{id}")]
+
+
+          [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         var user = await _service.GetByIdAsync(id);
@@ -24,9 +28,13 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
+
+
     [HttpPost]
-    public async Task<IActionResult> Create(User user)
-        => Ok(await _service.CreateAsync(user));
+    public async Task<IActionResult> Create(User user)=> Ok(await _service.CreateAsync(user));
+
+
+
 
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, User user)
@@ -36,7 +44,9 @@ public class UsersController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+
+
+[HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         await _service.DeleteAsync(id);
