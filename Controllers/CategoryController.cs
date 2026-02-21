@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using StoreAPI.Entities;
 
+
 [ApiController]
 [Route("api/[controller]")]
 public class CategoriesController : ControllerBase
@@ -11,6 +12,7 @@ public class CategoriesController : ControllerBase
     {
         _service = service;
     }
+
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
